@@ -1,0 +1,10 @@
+{
+    "version": "0.1.0",
+    "command": "/Users/xavier/anaconda/envs/py35/bin/python",
+    "isShellCommand": true,
+    "showOutput": "always",
+    "args": [
+        "${file}"
+    ]
+
+}
