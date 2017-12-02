@@ -1,27 +1,13 @@
+from tools import parse
+
 # PART 1
 def part1(s):
-    rows = s.split('\n')
-    tot = 0
-    for a in rows:
-        arr = a.split('\t')
-        arr = list(map(lambda x: int(x), arr))
-        tot += (max(arr) - min(arr))
-    return tot
+    return sum([max(i)-min(i) for i in parse.fromArrayInt(s)])
 
 # PART 2
 def part2(s):
-    rows = s.split('\n')
-    tot = 0
-    for a in rows:
-        arr = a.split('\t')
-        arr = list(map(lambda x: int(x), arr))
-        arr2 = []
-        for x in arr:
-            for y in arr:
-                if x%y == 0:
-                    arr2.append(int(x//y))
-        tot += max(arr2)
-    return tot
+    arr = parse.fromArrayInt(s)
+    return sum([max([x//y for x in line for y in line if x%y==0]) for line in arr])
 
 
 # INPUTS
