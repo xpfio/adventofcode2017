@@ -1,30 +1,39 @@
-# PART 1
+"""Template file for Python source code"""
 
-def part1(input):
-    """Calculate Part 1 of the problem for any input"""
-    print('AAA')
+# PART 1
+def part1(s):
+    rows = s.split('\n')
+    tot = 0
+    for a in rows:
+        arr = a.split('\t')
+        arr = list(map(lambda x: int(x), arr))
+        tot += (max(arr) - min(arr))
+    return tot
 
 # PART 2
-def part2(input):
-    """Calculate Part 2 of the problem for any input"""
-    #
-    # code goes here
-    #
-    return 'OUTPUT_'
+def part2(s):
+    rows = s.split('\n')
+    tot = 0
+    for a in rows:
+        arr = a.split('\t')
+        arr = list(map(lambda x: int(x), arr))
+        arr2 = []
+        for x in arr:
+            for y in arr:
+                if x%y == 0:
+                    arr2.append(int(x//y))
+        tot += max(arr2)
+    return tot
+
 
 # INPUTS
-
 FILE = 'input/day02.txt'
-
 TESTS_PART1 = [
-    ("INPUT","OUTPUT")
+    ("5	1	9	5\n7	5	3\n2	4	6	8","18")
 ]
-
 TESTS_PART2 = [
-    ("INPUT","OUTPUT")
+    ("5	9	2	8\n9	4	7	3\n3	8	6	5","9")
 ]
-
-
 
 
 ## Part 1 - Tests
@@ -42,7 +51,6 @@ def tests_part1(input, expected_solution):
 
 for test in TESTS_PART1:
     tests_part1(test[0], test[1])
-
 
 ## Part 1 - Answer
 def read_input():
@@ -72,3 +80,4 @@ for test in TESTS_PART2:
 
 ## Part 2 - Answer
 print('\033[94m' + 'PART 2 ANSWER: ', str(part2(str(read_input()))))
+print('\n')
