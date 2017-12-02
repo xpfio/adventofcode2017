@@ -1,5 +1,3 @@
-"""Template file for Python source code"""
-
 # PART 1
 def part1(s):
     rows = s.split('\n')
