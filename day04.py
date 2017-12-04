@@ -4,38 +4,15 @@ from itertools import groupby
 
 # PART 1
 def part1(s):
-    lines = s.split('\n')
-    count = 0
-    for line in lines:
-        words = line.split(' ')
-        dirty = 0
-        words = sorted(words)
-        b = groupby(words)
-        for a in [len(list(group)) for key, group in b]:
-            if a > 1:
-                dirty = 1
-        if dirty == 0:
-            count += 1
-    return count
+    return sum([1 \
+            for line in s.split('\n') \
+            if len(set(line.split(' '))) == len(line.split(' ')) ])
+
 
 def part2(s):
-    lines = s.split('\n')
-    count = 0
-    for line in lines:
-        words = line.split(' ')
-        dirty = 0
-        words = list(map(lambda x: sorted(x),words))
-        words = sorted(words)
-        b = groupby(words)
-        for a in [len(list(group)) for key, group in b]:
-            if a > 1:
-                dirty = 1
-        if dirty == 0:
-            count += 1
-    return count
-
-
-
+    return sum([1 \
+            for line in s.split('\n') \
+            if len(set(map(lambda x:''.join(sorted(x)),line.split(' ')))) == len(line.split(' ')) ])
 
 # INPUTS
 FILE = 'input/day04.txt'
