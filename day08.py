@@ -1,7 +1,3 @@
-import numpy as np
-
-np.z
-
 def day08 (s):
     # print(s)
     lines = s.split('\n')
