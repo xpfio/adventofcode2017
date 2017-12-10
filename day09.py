@@ -47,8 +47,8 @@ def day9_2(s,current_depth=1):
 
         if s[index] == '{' and not ignored:
             # This defines a block, looking for the end of the block
-            end = index + day9(s[index+1:],current_depth+1)[0]
-            total += current_depth + day9(s[index+1:end+1],current_depth+1)[1]
+            end = index + day9_2(s[index+1:],current_depth+1)[0]
+            total += day9_2(s[index+1:end+1],current_depth+1)[1]
             index = end + 1
 
         elif s[index] == '}' and not ignored:
@@ -59,6 +59,10 @@ def day9_2(s,current_depth=1):
             ignored = False
         elif s[index] == '!':
             ignore_next = True
+        elif ignored:
+            # print(s[index])
+            total += 1
+            
             
         index += 1
     return ['',total]
@@ -67,7 +71,7 @@ def day9_2(s,current_depth=1):
 
 with open('input/day09.txt') as f:
     text = f.read()
-    # print(day9(text))
+    print(day9(text))
     print(day9_2(text))
 
 
