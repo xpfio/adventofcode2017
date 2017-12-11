@@ -26,11 +26,6 @@ def day10(s):
     print(array)
     return array[0]*array[1]
 
-    
-
-with open('input/day10.txt') as f:
-    pb_input = f.read()
-    print(day10(pb_input))
 
 
 
@@ -40,7 +35,7 @@ def algo(array_,to_reverse):
     skip_size = 0
     for k in range(64):
         for element in to_reverse:
-            print(array, element, position, skip_size)
+            # print(array, element, position, skip_size)
             copy = array.copy()
             for index in range(element):
                 from_index = position+index
@@ -55,5 +50,29 @@ def algo(array_,to_reverse):
             position %= len(array)
             skip_size += 1
 
-        print(array)
+        # print(array)
     return array
+
+from functools import reduce
+
+def part2(s):
+    print(s)
+    to_reverse = list(map(lambda x: ord(x),s))
+    print(to_reverse)
+    to_reverse = list(map(lambda x: int(x),to_reverse))
+    to_reverse += [17, 31, 73, 47, 23]
+    # print(to_reverse)
+    array = list(range(256))
+    array = algo(array, to_reverse)
+
+    output = ''
+    for index in range(16):
+        sub_array = array[index*16:index*16+16]
+        output += format(reduce((lambda x, y: x ^ y), sub_array), '02x')
+
+    # format(10, '02x')
+    return output
+
+with open('input/day10.txt') as f:
+    pb_input = f.read()
+    print(part2(pb_input))
