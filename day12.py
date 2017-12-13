@@ -7,7 +7,7 @@ def part1(s):
         current = to_explore.pop()
         data = lines[current].split(' <-> ')[1]
         data = data.split(',')
-        data = list(map(lambda x: int(x),data))
+        data = list(map(int,data))
         
         for a in data:
             if a not in group_0:
@@ -30,7 +30,7 @@ def part2(s):
                 current = to_explore.pop()
                 data = lines[current].split(' <-> ')[1]
                 data = data.split(',')
-                data = list(map(lambda x: int(x),data))
+                data = list(map(int,data))
                 
                 for a in data:
                     if a not in groups:
@@ -41,4 +41,5 @@ def part2(s):
 
 with open('input/day12.txt') as f:
     pb_input = f.read()
+    print(part1(pb_input))
     print(part2(pb_input))
