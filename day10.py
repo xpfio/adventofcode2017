@@ -1,5 +1,5 @@
 def day10_part1(s):
-    print(s)
+    # print(s)
     to_reverse = s.split(',')
     to_reverse = list(map(lambda x: int(x),to_reverse))
     # print(to_reverse)
@@ -80,4 +80,7 @@ def part2(s):
 
 with open('input/day10.txt') as f:
     pb_input = f.read()
-    print(part2(pb_input))
+    # print(part2(pb_input))
+
+def knot_hash(s):
+    return part2(s)
